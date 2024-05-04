@@ -1,6 +1,8 @@
 package DevLSB.spotify.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @FeignClient(
         name = "AlbumSpotifyClient",
@@ -8,5 +10,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 )
 public interface AlbumSpotifyClient {
 
-
+    @GetMapping("/v1/browse/new-releases")
+    AlbumResponse getReleases(@RequestHeader("Authorization") String authorization);
 }
